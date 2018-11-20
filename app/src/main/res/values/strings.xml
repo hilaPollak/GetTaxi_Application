@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">MyFirstApplication</string>
+<string name="app_name">Spiner Status</string>
+    <string-array name="status">
+        <item>AVAILABLE</item>
+        <item>TREATMENT</item>
+        <item>ENDING</item>
+    </string-array>
 </resources>

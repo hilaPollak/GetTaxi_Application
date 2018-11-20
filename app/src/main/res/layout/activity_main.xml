@@ -6,28 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".controller.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="39dp"
-        android:text="welcome to GETAXI"
-        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-        tools:layout_editor_absoluteX="139dp"
-        tools:layout_editor_absoluteY="240dp" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"     android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/add drive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="add drive"
-        tools:layout_editor_absoluteX="60dp"
-        tools:layout_editor_absoluteY="329dp" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="245dp"
-        tools:layout_editor_absoluteY="329dp" />
+        <TextView
+            android:id="@+id/textViewWelcome"
+            android:layout_width="314dp"
+            android:layout_height="58dp"
+            android:text="        welcome to GetTaxi!"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+            android:visibility="visible"
+
+            tools:layout_editor_absoluteX="47dp"
+            tools:layout_editor_absoluteY="76dp" />
+
+
+        <Button
+            android:id="@+id/buttonenter"
+            android:layout_width="338dp"
+            android:layout_height="113dp"
+            android:onClick="goToActivity2"
+            android:text="to invite a drive press here"
+            tools:layout_editor_absoluteX="42dp"
+            tools:layout_editor_absoluteY="192dp" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

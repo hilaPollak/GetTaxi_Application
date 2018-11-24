@@ -4,23 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hila.myfirstapplication.controller.AddDriveActivity">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/activity_add_lecturer"
+    tools:context="com.example.hila.myfirstapplication.controller.AddDriveActivity"
+    android:background="@drawable/taxibackround">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="594dp"
+        android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="56dp">
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Name" />
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+
+        <com.santalu.maskedittext.MaskEditText
+            android:id="@+id/edit_text_phone"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            app:met_mask="+972(##) ### ## ##" />
 
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="149dp"
-            android:layout_height="23dp"
+            android:layout_width="164dp"
+            android:layout_height="48dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:hint="Status of drive"
+            android:text="choose status"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
@@ -28,50 +55,42 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.498" />
 
-        <com.santalu.maskedittext.MaskEditText
-            android:id="@+id/edit_text_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Phone Number"
-            android:inputType="phone"
-            app:met_mask="+972(##) ### ## ##" />
-
-
-
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/mapView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/mapView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
         <TimePicker
             android:id="@+id/startTimePicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="233dp"
+            android:layout_height="109dp"
             android:timePickerMode="spinner" />
+
         <TimePicker
             android:id="@+id/endTimePicker"
-            android:layout_width="267dp"
-            android:layout_height="149dp"
+            android:layout_width="230dp"
+            android:layout_height="107dp"
             android:timePickerMode="spinner" />
 
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="name" />
-
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editText4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textEmailAddress" />
+            android:inputType="textPostalAddress"
+            android:hint="Start adress" />
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPostalAddress"
+            android:hint="End adress" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Invite!"
+            android:onClick="showAlertDialogButtonClicked" />
+
+
 
     </LinearLayout>
 

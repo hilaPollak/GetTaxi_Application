@@ -8,6 +8,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+
+
+
 import com.example.hila.myfirstapplication.R;
 
 public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSelectedListener {
@@ -38,5 +43,20 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
+    }
+
+    public void showAlertDialogButtonClicked(View view) {
+
+        // setup the alert builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("successful");
+        builder.setMessage("Your order has been successfully.");
+
+        // add a button
+        builder.setPositiveButton("OK", null);
+
+        // create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

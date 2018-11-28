@@ -161,23 +161,23 @@ public class Drive {
         Email = email;
     }
 
-    /*public static ContentValues DriveToContentValues(Drive drive) {
+    public static ContentValues DriveToContentValues(Drive drive) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(GetTaxiConst.DriveConst.STATUS_OF_DRIVE, drive.getStatusOfRide());
+        contentValues.put(GetTaxiConst.DriveConst.STATUS_OF_DRIVE, drive.getStatusOfRide().toString());
         contentValues.put(GetTaxiConst.DriveConst.START_ADDRESS, drive.getStartAddress());
         contentValues.put(GetTaxiConst.DriveConst.END_ADDRESS, drive.getEndAddress());
-        contentValues.put(GetTaxiConst.DriveConst.START_TIME, drive.getStartTime());
-        contentValues.put(GetTaxiConst.DriveConst.END_TIME, drive.getEndTime());
+        contentValues.put(GetTaxiConst.DriveConst.START_TIME, drive.getStartTime().toString());
+        contentValues.put(GetTaxiConst.DriveConst.END_TIME, drive.getEndTime().toString());
         contentValues.put(GetTaxiConst.DriveConst.NAME, drive.getName());
         contentValues.put(GetTaxiConst.DriveConst.PHONE_NUMBER, drive.getPhoneNumber());
         contentValues.put(GetTaxiConst.DriveConst.EMAIL, drive.getEmail());
 
 
         return contentValues;}
-        */
 
 
-  /*  public static Drive ContentValuesToDrive(ContentValues contentValues) {
+
+    public static Drive ContentValuesToDrive(ContentValues contentValues) {
         Drive drive = new Drive();
         drive.setStatusOfRide(contentValues.getAsString(GetTaxiConst.DriveConst.STATUS_OF_DRIVE));
         drive.setStartAddress(contentValues.getAsString(GetTaxiConst.DriveConst.START_ADDRESS));
@@ -189,7 +189,7 @@ public class Drive {
         drive.setEmail(contentValues.getAsString(GetTaxiConst.DriveConst.EMAIL));
 
 
-        return drive;}*/
+        return drive;}
 
 
 

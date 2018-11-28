@@ -1,3 +1,16 @@
 <resources>
-<string name="app_name">Spiner Status</string>
+<string name="app_name">Getaxi</string>
+    <string name="Name">Name</string>
+    <string name="Email">Email</string>
+    <string name="Phone">Phone</string>
+    <string name="Statusofdrive">Status of drive</string>
+    <string name="Startaddress">Start address</string>
+    <string name="Endaddress">End address</string>
+    <string name="Password">Password</string>
+    <string name="Invite">Invite!</string>
+    <string name="NoaccountyetCreateone">No account yet? Create one</string>
+    <string name="Login">Login</string>
+
+
+
 </resources>

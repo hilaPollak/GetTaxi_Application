@@ -1,12 +1,14 @@
 package com.example.hila.myfirstapplication.model.entities;
 
+import android.content.ContentValues;
+
 /**
  this class represent the driver's characteristics
  */
 public class Driver {
     private String FirstName;//first name of driver
     private String LastName;//last name of driver
-    private long Id;//id of driver
+    private long _Id;//id of driver
     private long PhoneNumber;// phone number of driver
     private String Email;// email of driver
     private long CreditCard;// credit card for commission
@@ -22,7 +24,7 @@ public class Driver {
     public Driver(String firstName, String lastName, long id, long phoneNumber, String email, long creditCard) {
         FirstName = firstName;
         LastName = lastName;
-        Id = id;
+        _Id = id;
         PhoneNumber = phoneNumber;
         Email = email;
         CreditCard = creditCard;
@@ -63,16 +65,16 @@ public class Driver {
      this func return the id of driver
      * @return   the driver's id
      */
-    public long getId() {
-        return Id;
+    public long get_Id() {
+        return _Id;
     }
     /**
      this func input the driver's id
      @param  id  the id driver
      @return   null
      */
-    public void setId(long id) {
-        Id = id;
+    public void set_Id(long id) {
+        _Id = id;
     }
     /**
      this func return the phone number of driver
@@ -119,4 +121,28 @@ public class Driver {
     public void setCreditCard(long creditCard) {
         CreditCard = creditCard;
     }
-}
+
+    public static ContentValues DriverToContentValues(Driver driver) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(GetTaxiConst.DriverConst.FIRST_NAME, driver.getFirstName());
+        contentValues.put(GetTaxiConst.DriverConst.LAST_NAME, driver.getLastName());
+        contentValues.put(GetTaxiConst.DriverConst._ID, driver.get_Id());
+        contentValues.put(GetTaxiConst.DriverConst.PHONE_NUMBER, driver.getPhoneNumber());
+        contentValues.put(GetTaxiConst.DriverConst.EMAIL, driver.getEmail());
+        contentValues.put(GetTaxiConst.DriverConst.CREDIT_CARD, driver.getCreditCard());
+
+        return contentValues;
+    }
+
+    public static Driver ContentValuesToDriver(ContentValues contentValues) {
+        Driver driver = new Driver();
+        driver.setFirstName(contentValues.getAsString(GetTaxiConst.DriverConst.FIRST_NAME));
+        driver.setLastName(contentValues.getAsString(GetTaxiConst.DriverConst.LAST_NAME));
+        driver.set_Id(contentValues.getAsLong(GetTaxiConst.DriverConst._ID));
+        driver.setPhoneNumber(contentValues.getAsLong(GetTaxiConst.DriverConst.PHONE_NUMBER));
+        driver.setEmail(contentValues.getAsString(GetTaxiConst.DriverConst.EMAIL));
+        driver.setCreditCard(contentValues.getAsLong(GetTaxiConst.DriverConst.CREDIT_CARD));
+
+        return driver;
+    }
+    }

@@ -122,26 +122,36 @@ public class Driver {
         CreditCard = creditCard;
     }
 
+    /**
+     * this func get driver  value object and change it to content value object
+     * @param driver the object by type driver
+     * @return object by type content value
+     */
     public static ContentValues DriverToContentValues(Driver driver) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(GetTaxiConst.DriverConst.FIRST_NAME, driver.getFirstName());
-        contentValues.put(GetTaxiConst.DriverConst.LAST_NAME, driver.getLastName());
-        contentValues.put(GetTaxiConst.DriverConst._ID, driver.get_Id());
-        contentValues.put(GetTaxiConst.DriverConst.PHONE_NUMBER, driver.getPhoneNumber());
-        contentValues.put(GetTaxiConst.DriverConst.EMAIL, driver.getEmail());
-        contentValues.put(GetTaxiConst.DriverConst.CREDIT_CARD, driver.getCreditCard());
+        contentValues.put(GetTaxiContract.DriverConst.FIRST_NAME, driver.getFirstName());
+        contentValues.put(GetTaxiContract.DriverConst.LAST_NAME, driver.getLastName());
+        contentValues.put(GetTaxiContract.DriverConst._ID, driver.get_Id());
+        contentValues.put(GetTaxiContract.DriverConst.PHONE_NUMBER, driver.getPhoneNumber());
+        contentValues.put(GetTaxiContract.DriverConst.EMAIL, driver.getEmail());
+        contentValues.put(GetTaxiContract.DriverConst.CREDIT_CARD, driver.getCreditCard());
 
         return contentValues;
     }
 
+    /**
+     * this func get content value object and change it to driver value
+     * @param contentValues the object by type content value
+     * @return object by type driver
+     */
     public static Driver ContentValuesToDriver(ContentValues contentValues) {
         Driver driver = new Driver();
-        driver.setFirstName(contentValues.getAsString(GetTaxiConst.DriverConst.FIRST_NAME));
-        driver.setLastName(contentValues.getAsString(GetTaxiConst.DriverConst.LAST_NAME));
-        driver.set_Id(contentValues.getAsLong(GetTaxiConst.DriverConst._ID));
-        driver.setPhoneNumber(contentValues.getAsLong(GetTaxiConst.DriverConst.PHONE_NUMBER));
-        driver.setEmail(contentValues.getAsString(GetTaxiConst.DriverConst.EMAIL));
-        driver.setCreditCard(contentValues.getAsLong(GetTaxiConst.DriverConst.CREDIT_CARD));
+        driver.setFirstName(contentValues.getAsString(GetTaxiContract.DriverConst.FIRST_NAME));
+        driver.setLastName(contentValues.getAsString(GetTaxiContract.DriverConst.LAST_NAME));
+        driver.set_Id(contentValues.getAsLong(GetTaxiContract.DriverConst._ID));
+        driver.setPhoneNumber(contentValues.getAsLong(GetTaxiContract.DriverConst.PHONE_NUMBER));
+        driver.setEmail(contentValues.getAsString(GetTaxiContract.DriverConst.EMAIL));
+        driver.setCreditCard(contentValues.getAsLong(GetTaxiContract.DriverConst.CREDIT_CARD));
 
         return driver;
     }

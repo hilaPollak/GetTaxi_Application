@@ -16,6 +16,8 @@ public class Drive {
     private long PhoneNumber;//client's phone number
     private String Email;//client's email
 
+
+
     /**
      this func build defult constructor
      */
@@ -161,35 +163,47 @@ public class Drive {
         Email = email;
     }
 
+
+    /**
+     * this func get drive value object and change it to content value object
+     * @param drive the object by type drive
+     * @return object by type content value
+     */
     public static ContentValues DriveToContentValues(Drive drive) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(GetTaxiConst.DriveConst.STATUS_OF_DRIVE, drive.getStatusOfRide().toString());
-        contentValues.put(GetTaxiConst.DriveConst.START_ADDRESS, drive.getStartAddress());
-        contentValues.put(GetTaxiConst.DriveConst.END_ADDRESS, drive.getEndAddress());
-        contentValues.put(GetTaxiConst.DriveConst.START_TIME, drive.getStartTime().toString());
-        contentValues.put(GetTaxiConst.DriveConst.END_TIME, drive.getEndTime().toString());
-        contentValues.put(GetTaxiConst.DriveConst.NAME, drive.getName());
-        contentValues.put(GetTaxiConst.DriveConst.PHONE_NUMBER, drive.getPhoneNumber());
-        contentValues.put(GetTaxiConst.DriveConst.EMAIL, drive.getEmail());
+        contentValues.put(GetTaxiContract.DriveConst.STATUS_OF_DRIVE, drive.getStatusOfRide().toString());
+        contentValues.put(GetTaxiContract.DriveConst.START_ADDRESS, drive.getStartAddress());
+        contentValues.put(GetTaxiContract.DriveConst.END_ADDRESS, drive.getEndAddress());
+        contentValues.put(GetTaxiContract.DriveConst.START_TIME, drive.getStartTime().toString());
+        contentValues.put(GetTaxiContract.DriveConst.END_TIME, drive.getEndTime().toString());
+        contentValues.put(GetTaxiContract.DriveConst.NAME, drive.getName());
+        contentValues.put(GetTaxiContract.DriveConst.PHONE_NUMBER, drive.getPhoneNumber());
+        contentValues.put(GetTaxiContract.DriveConst.EMAIL, drive.getEmail());
 
 
         return contentValues;}
 
 
 
+    /*
+    /**
+     * this func get content value object and change it to drive value
+     * @param contentValues the object by type content value
+     * @return object by type drive
+
     public static Drive ContentValuesToDrive(ContentValues contentValues) {
         Drive drive = new Drive();
-        drive.setStatusOfRide(contentValues.getAsString(GetTaxiConst.DriveConst.STATUS_OF_DRIVE));
-        drive.setStartAddress(contentValues.getAsString(GetTaxiConst.DriveConst.START_ADDRESS));
-        drive.setEndAddress(contentValues.getAsString(GetTaxiConst.DriveConst.END_ADDRESS));
-        drive.setStartTime(contentValues.getAsLong(GetTaxiConst.DriveConst.START_TIME));
-        drive.setEndTime(contentValues.getAsString(GetTaxiConst.DriveConst.END_TIME));
-        drive.setName(contentValues.getAsString(GetTaxiConst.DriveConst.NAME));
-        drive.setPhoneNumber(contentValues.getAsLong(GetTaxiConst.DriveConst.PHONE_NUMBER));
-        drive.setEmail(contentValues.getAsString(GetTaxiConst.DriveConst.EMAIL));
+        drive.setStatusOfRide(contentValues.getAsString(GetTaxiContract.DriveConst.STATUS_OF_DRIVE));
+        drive.setStartAddress(contentValues.getAsString(GetTaxiContract.DriveConst.START_ADDRESS));
+        drive.setEndAddress(contentValues.getAsString(GetTaxiContract.DriveConst.END_ADDRESS));
+        drive.setStartTime(contentValues.getAsLong(GetTaxiContract.DriveConst.START_TIME));
+        drive.setEndTime(contentValues.getAsString(GetTaxiContract.DriveConst.END_TIME));
+        drive.setName(contentValues.getAsString(GetTaxiContract.DriveConst.NAME));
+        drive.setPhoneNumber(contentValues.getAsLong(GetTaxiContract.DriveConst.PHONE_NUMBER));
+        drive.setEmail(contentValues.getAsString(GetTaxiContract.DriveConst.EMAIL));
 
 
-        return drive;}
+        return drive;}*/
 
 
 

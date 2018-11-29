@@ -7,6 +7,7 @@
     tools:context="com.example.hila.myfirstapplication.controller.AddDriveActivity"
     android:background="@drawable/taxibackround">
 
+    <!-- this activity get the data, check them and add drive -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="594dp"
@@ -14,6 +15,8 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         android:paddingTop="56dp">
+
+        <!-- tthe client name -->
         <EditText
             android:id="@+id/editText"
             android:layout_width="match_parent"
@@ -21,6 +24,8 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="@string/Name"/>
+
+        <!-- email of client -->
         <EditText
             android:id="@+id/editText2"
             android:layout_width="match_parent"
@@ -29,6 +34,7 @@
             android:hint="@string/Email"
             android:inputType="textEmailAddress" />
 
+        <!-- phone number of client -->
         <EditText
             android:id="@+id/editText8"
             android:layout_width="match_parent"
@@ -37,7 +43,7 @@
             android:hint="@string/Phone"
             android:inputType="textPersonName"/>
 
-
+        <!-- spiner to choose status -->
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="164dp"
@@ -54,18 +60,21 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.498" />
 
+        <!-- the start time of drive -->
         <TimePicker
             android:id="@+id/startTimePicker"
             android:layout_width="233dp"
             android:layout_height="109dp"
             android:timePickerMode="spinner" />
 
+        <!-- the end time of drive -->
         <TimePicker
             android:id="@+id/endTimePicker"
             android:layout_width="230dp"
             android:layout_height="107dp"
             android:timePickerMode="spinner" />
 
+        <!-- start address -->
         <EditText
             android:id="@+id/editText4"
             android:layout_width="match_parent"
@@ -74,6 +83,7 @@
             android:inputType="textPostalAddress"
             android:hint="@string/Startaddress" />
 
+        <!-- end address -->
         <EditText
             android:id="@+id/editText5"
             android:layout_width="match_parent"
@@ -82,6 +92,7 @@
             android:inputType="textPostalAddress"
             android:hint="@string/Endaddress" />
 
+        <!-- this button make the invite -->
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"

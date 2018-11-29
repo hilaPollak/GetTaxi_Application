@@ -1,6 +1,7 @@
 package com.example.hila.myfirstapplication.controller;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,24 +13,32 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
-
 
 
 import com.example.hila.myfirstapplication.R;
+import com.example.hila.myfirstapplication.model.entities.GetTaxiContract;
 
+/**
+ * this class rpresent the activity of add drives.
+ */
 public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSelectedListener {
-    String[] country = {"AVAILABLE", "TREATMENT", "ENDING"};
 
+    String[] country = {"AVAILABLE", "TREATMENT", "ENDING"};//status of drive that will show in spinner
+
+    /**
+     * this func make the view of the object in the activity when he called
+     * @param savedInstanceState represent the jump of activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_add_drive);
         //Getting the instance of Spinner and applying OnItemSelectedListener on it
-        Spinner spin = (Spinner) findViewById(R.id.spinner);
+        Spinner spin = (Spinner) findViewById(R.id.spinner);//find the object by id
         spin.setOnItemSelectedListener(this);
 
-        //Creating the ArrayAdapter instance having the country list
+        //Creating the ArrayAdapter instance having the status list
         ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, country);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
@@ -37,10 +46,12 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
 
     }
 
-    //Performing action onItemSelected and onNothing selected
+    /**
+     * this func performing action onItemSelected and onNothing selected
+     */
     @Override
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-        Toast.makeText(getApplicationContext(), country[position], Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), country[position], Toast.LENGTH_LONG).show();// when you make the choise toast will jump
     }
 
     @Override
@@ -48,6 +59,10 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
         // TODO Auto-generated method stub
     }
 
+    /**
+     * this func jump a message of successfull when the invite well done
+     * @param view the event that start the active
+     */
     public void showAlertDialogButtonClicked(View view) {
 
         // setup the alert builder
@@ -63,42 +78,34 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
         dialog.show();
     }
 
-    private EditText editText;
-    private EditText editText2;
-    private EditText editText8;
-    private Spinner spinner;
+    //the objects of the screen
+    private EditText name;
+    private EditText email;
+    private EditText phone;
+    private Spinner statusSpinner;
     private TimePicker startTimePicker;
     private TimePicker endTimePicker;
-    private EditText editText4;
-    private EditText editText5;
-    private Button button2;
+    private EditText startAddress;
+    private EditText endAddress;
+    private Button buttonInvite;
 
     /**
-     * Find the Views in the layout<br />
-     * <br />
-     * Auto-created on 2018-11-28 19:28:36 by Android Layout Finder
-     * (http://www.buzzingandroid.com/tools/android-layout-finder)
+     * this func connect the objects by their id
      */
     private void findViews() {
-        editText = (EditText)findViewById( R.id.editText );
-        editText2 = (EditText)findViewById( R.id.editText2 );
-        editText8 = (EditText)findViewById( R.id.editText8 );
-        spinner = (Spinner)findViewById( R.id.spinner );
+        name = (EditText)findViewById( R.id.editText );
+        email = (EditText)findViewById( R.id.editText2 );
+        phone = (EditText)findViewById( R.id.editText8 );
+        statusSpinner = (Spinner)findViewById( R.id.spinner );
         startTimePicker = (TimePicker)findViewById( R.id.startTimePicker );
         endTimePicker = (TimePicker)findViewById( R.id.endTimePicker );
-        editText4 = (EditText)findViewById( R.id.editText4 );
-        editText5 = (EditText)findViewById( R.id.editText5 );
-        button2 = (Button)findViewById( R.id.button2 );
+        startAddress = (EditText)findViewById( R.id.editText4 );
+        endAddress = (EditText)findViewById( R.id.editText5 );
+        buttonInvite = (Button)findViewById( R.id.button2 );
 
 
     }
 
-    /**
-     * Handle button click events<br />
-     * <br />
-     * Auto-created on 2018-11-28 19:28:36 by Android Layout Finder
-     * (http://www.buzzingandroid.com/tools/android-layout-finder)
-     */
 
     }
 

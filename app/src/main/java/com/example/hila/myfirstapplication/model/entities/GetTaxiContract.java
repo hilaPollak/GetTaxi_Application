@@ -1,6 +1,9 @@
 package com.example.hila.myfirstapplication.model.entities;
 
-public class GetTaxiConst {
+/**
+ * this class represent the name of objects of contract value
+ */
+public class GetTaxiContract {
     public static class DriveConst {
         public static final String STATUS_OF_DRIVE = "StatusOfRide";
         public static final String START_ADDRESS = "StartAddress";

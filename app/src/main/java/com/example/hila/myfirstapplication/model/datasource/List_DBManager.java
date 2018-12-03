@@ -10,6 +10,9 @@ public class List_DBManager implements DB_manager {
     @Override
     public void addDrive(Drive drive){
         drives.add(drive);
+        for(int i=0;i<drives.size();i++){
+            System.out.println(drives.get(i).getName());
+        }
         return;
     }
 

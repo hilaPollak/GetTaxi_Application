@@ -3,6 +3,7 @@ package com.example.hila.myfirstapplication.controller;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,12 +12,19 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 import android.app.AlertDialog;
 
 
 import com.example.hila.myfirstapplication.R;
+import com.example.hila.myfirstapplication.model.backend.DB_manager;
+import com.example.hila.myfirstapplication.model.datasource.List_DBManager;
+import com.example.hila.myfirstapplication.model.entities.Drive;
+import com.example.hila.myfirstapplication.model.entities.DriveStatus;
 import com.example.hila.myfirstapplication.model.entities.GetTaxiContract;
+
+import java.time.Clock;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * this class rpresent the activity of add drives.
@@ -27,6 +35,7 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
 
     /**
      * this func make the view of the object in the activity when he called
+     *
      * @param savedInstanceState represent the jump of activity
      */
     @Override
@@ -43,6 +52,9 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
+
+        TimePicker startTimePicker = (TimePicker)findViewById(R.id.startTimePicker); // initiate a time picker
+        startTimePicker.setIs24HourView(true); // set 24 hours mode for the time picker
 
     }
 
@@ -61,10 +73,11 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
 
     /**
      * this func jump a message of successfull when the invite well done
+     *
      * @param view the event that start the active
      */
     public void showAlertDialogButtonClicked(View view) {
-
+        addDrive();
         // setup the alert builder
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("successful");
@@ -76,6 +89,7 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
         // create and show the alert dialog
         AlertDialog dialog = builder.create();
         dialog.show();
+
     }
 
     //the objects of the screen
@@ -93,20 +107,76 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
      * this func connect the objects by their id
      */
     private void findViews() {
-        name = (EditText)findViewById( R.id.editText );
-        email = (EditText)findViewById( R.id.editText2 );
-        phone = (EditText)findViewById( R.id.editText8 );
-        statusSpinner = (Spinner)findViewById( R.id.spinner );
-        startTimePicker = (TimePicker)findViewById( R.id.startTimePicker );
-        endTimePicker = (TimePicker)findViewById( R.id.endTimePicker );
-        startAddress = (EditText)findViewById( R.id.editText4 );
-        endAddress = (EditText)findViewById( R.id.editText5 );
-        buttonInvite = (Button)findViewById( R.id.button2 );
+        name = (EditText) findViewById(R.id.editText);
+        email = (EditText) findViewById(R.id.editText2);
+        phone = (EditText) findViewById(R.id.editText8);
+        statusSpinner = (Spinner) findViewById(R.id.spinner);
+        startTimePicker = (TimePicker) findViewById(R.id.startTimePicker);
+
+        startAddress = (EditText) findViewById(R.id.editText4);
+        endAddress = (EditText) findViewById(R.id.editText5);
+        buttonInvite = (Button) findViewById(R.id.button2);
+
+
+    }
+    public String toString(DriveStatus s){
+        switch(s){
+            case AVAILABLE :
+                return "AVAILABLE";
+            case TREATMENT :
+                return "TREATMENT";
+            case ENDING :
+                return "ENDING";
+        }
+        return null;
+    }
+
+    public DriveStatus toEnum(String s) {
+        if (s== "AVAILABLE")
+            return DriveStatus.AVAILABLE;
+        else if (s== "TREATMENT")
+            return DriveStatus.TREATMENT;
+        else if (s== "ENDING")
+            return DriveStatus.ENDING;
+        else
+            return null;
+    }
+
+    private void addDrive() {
+        final Drive contentValues = new Drive();
+        try {
+            String status= statusSpinner.getSelectedItem().toString();
+            DriveStatus driveStatus;
+            driveStatus= toEnum(status);
+
+            String NameText=name.getText().toString();
+            String phoneText=phone.getText().toString();
+            String emailText=email.getText().toString();
+            String startAddress1=startAddress.getText().toString();
+            String endAddress1=endAddress.getText().toString();
+
+            int hours=startTimePicker.getCurrentHour();
+            int minutes=startTimePicker.getCurrentMinute();
+
+
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.HOUR_OF_DAY,hours);
+            cal.set(Calendar.MINUTE,minutes);
+            cal.set(Calendar.SECOND,0);
+            cal.set(Calendar.MILLISECOND,0);
+
+            Date c=cal.getTime();
+
+            Drive driver=new Drive(driveStatus ,startAddress1,endAddress1,c,c,NameText,phoneText,emailText);
+             //Globals.backend. addDriver(driver);
+            List_DBManager l=new List_DBManager();
+            l.addDrive(driver);
+
+        } catch (Exception e) {
+        }
 
 
     }
 
 
-    }
-
-
+}

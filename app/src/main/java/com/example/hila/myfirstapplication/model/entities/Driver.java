@@ -12,6 +12,8 @@ public class Driver {
     private long PhoneNumber;// phone number of driver
     private String Email;// email of driver
     private long CreditCard;// credit card for commission
+    private String password;//password for driver
+
 
     /**
      this func build defult constructor
@@ -21,13 +23,14 @@ public class Driver {
     /**
      this func build constructor
      */
-    public Driver(String firstName, String lastName, long id, long phoneNumber, String email, long creditCard) {
+    public Driver(String firstName, String lastName, long id, long phoneNumber, String email, long creditCard,String password1) {
         FirstName = firstName;
         LastName = lastName;
         _Id = id;
         PhoneNumber = phoneNumber;
         Email = email;
         CreditCard = creditCard;
+        password=password1;
     }
 
     /**
@@ -120,6 +123,15 @@ public class Driver {
      */
     public void setCreditCard(long creditCard) {
         CreditCard = creditCard;
+    }
+
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     /**

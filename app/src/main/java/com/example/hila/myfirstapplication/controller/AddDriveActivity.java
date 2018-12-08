@@ -1,9 +1,7 @@
 package com.example.hila.myfirstapplication.controller;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,13 +14,10 @@ import android.app.AlertDialog;
 
 
 import com.example.hila.myfirstapplication.R;
-import com.example.hila.myfirstapplication.model.backend.DB_manager;
-import com.example.hila.myfirstapplication.model.datasource.List_DBManager;
+import com.example.hila.myfirstapplication.model.datasource.List_IDataBase;
 import com.example.hila.myfirstapplication.model.entities.Drive;
 import com.example.hila.myfirstapplication.model.entities.DriveStatus;
-import com.example.hila.myfirstapplication.model.entities.GetTaxiContract;
 
-import java.time.Clock;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -169,8 +164,11 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
 
             Drive driver=new Drive(driveStatus ,startAddress1,endAddress1,c,c,NameText,phoneText,emailText);
              //Globals.backend. addDriver(driver);
-            List_DBManager l=new List_DBManager();
-            l.addDrive(driver);
+
+
+            List_IDataBase l=new List_IDataBase();
+           // l.addDrive(driver);
+
 
         } catch (Exception e) {
         }

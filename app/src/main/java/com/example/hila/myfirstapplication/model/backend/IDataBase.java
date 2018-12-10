@@ -2,8 +2,6 @@ package com.example.hila.myfirstapplication.model.backend;
 import com.example.hila.myfirstapplication.model.entities.Drive;
 import com.example.hila.myfirstapplication.model.entities.Driver;
 
-import java.util.List;
-
 public interface IDataBase {
     //region Inner InterFaces
     public interface Action{

@@ -1,5 +1,10 @@
 package com.example.hila.myfirstapplication.controller;
 
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +26,13 @@ public class MainActivity extends Activity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+        myRef.setValue("Hello, World!");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

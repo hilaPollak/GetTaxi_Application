@@ -46,8 +46,9 @@
             android:layout_height="56dp"
             android:ems="10"
             android:hint="@string/Phone"
-            android:inputType="textPersonName"
+            android:inputType="phone"
             />
+
 
         <!-- spiner to choose status -->
         <Spinner
@@ -95,6 +96,7 @@
             />
 
         <!-- this button make the invite -->
+
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"

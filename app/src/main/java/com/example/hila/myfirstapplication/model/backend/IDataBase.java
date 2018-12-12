@@ -2,12 +2,15 @@ package com.example.hila.myfirstapplication.model.backend;
 import com.example.hila.myfirstapplication.model.entities.Drive;
 import com.example.hila.myfirstapplication.model.entities.Driver;
 
+/***
+ * this interface represent the func of data manager
+ */
 public interface IDataBase {
     //region Inner InterFaces
     public interface Action{
-        void onSuccess();
-        void onFailure(Exception exception);
-        void onProgress(String status, double percent);
+        void onSuccess();//what to do when the action success
+        void onFailure(Exception exception);//what to do if its fail
+        void onProgress(String status, double percent);//what to do when thus in progress
     }
 
     public interface NotifyDataChange<T> {
@@ -16,8 +19,8 @@ public interface IDataBase {
     }
     //endregion
     //region Methods
-    void addDrive(Drive driveToAdd, Action action);
-    void addDriver(Driver driverToAdd, Action action);
-    void isValidDriverAuthentication(String emailForCheck, String passwordForCheck, Action action);
+    void addDrive(Drive driveToAdd, Action action);//add drive to database
+  //  void addDriver(Driver driverToAdd, Action action);//add driver to database
+   // void isValidDriverAuthentication(String emailForCheck, String passwordForCheck, Action action);//check if the driver valid in data base
     //endregion
 }

@@ -18,44 +18,53 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/***
+ * this class implement the data manager by firebase
+ */
 public class Firebase_DBManager implements IDataBase {
 
 
 
     //region Fields
-    static DatabaseReference drivesRef;
-    static DatabaseReference driverRef;
-    static List<Drive> travelsList;
+    static DatabaseReference drivesRef;//.ref of drives
+    static DatabaseReference driverRef;//ref of drivers
+    static List<Drive> driveList;//list of drives
     //endregion
     //region initialization
     static {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        drivesRef = database.getReference("Drives");
-        driverRef = database.getReference("Drivers");
-        travelsList = new ArrayList<>();
+        drivesRef = database.getReference("Drives");//create root to drives
+        driverRef = database.getReference("Drivers");//create root to drivers
+        driveList = new ArrayList<>();
     }
     //endregion
     //region Methods
+
+    /***
+     * this class add drive to database
+     * @param driveToAdd the rive we need to add
+     * @param action the action of method
+     */
     @Override
-    public void addDrive(Drive travelToAdd, final Action action) {
-        Task<Void> task = drivesRef.push().setValue(travelToAdd);
+    public void addDrive(Drive driveToAdd, final Action action) {
+        Task<Void> task = drivesRef.push().setValue(driveToAdd);//push- had spacial key
 
         task.addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
-            public void onSuccess(Void aVoid) {
+            public void onSuccess(Void aVoid) {//add to database success
                 action.onSuccess();
             }
         });
 
         task.addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onFailure(@NonNull Exception e) {
+            public void onFailure(@NonNull Exception e) {//add to database fail
                 action.onFailure(e);
             }
         });
     }
 
-    @Override
+  /*  @Override
     public void addDriver(Driver driverToAdd, final Action action) {
         Task<Void> task = driverRef.push().setValue(driverToAdd);
         task.addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -90,5 +99,5 @@ public class Firebase_DBManager implements IDataBase {
         });
 
     }
-    //endregion
+    //endregion*/
 }

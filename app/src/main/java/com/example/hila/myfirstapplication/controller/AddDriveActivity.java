@@ -88,25 +88,16 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
         Toast.makeText(getApplicationContext(), country[position], Toast.LENGTH_LONG).show();// when you make the choise toast will jump
     }
-
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
 
-
-    public String toString(DriveStatus s){
-        switch(s){
-            case AVAILABLE :
-                return "AVAILABLE";
-            case TREATMENT :
-                return "TREATMENT";
-            case ENDING :
-                return "ENDING";
-        }
-        return null;
-    }
-
+    /***
+     *this func get sring and represent him by enum type
+     * @param s the string from user
+     * @return drive status object
+     */
     public DriveStatus toEnum(String s) {
         if (s== "AVAILABLE")
             return DriveStatus.AVAILABLE;
@@ -121,7 +112,7 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
 
 
     /**
-     * this func jump a message of successfull when the invite well done
+     * this func add drive to database
      *
      * @param view the event that start the active
      */
@@ -129,6 +120,8 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
     public void inviteButtonClicked(View view) {
         Drive drive=getDrive();
         addDrive(drive);
+
+        /*
         // setup the alert builder
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("successful");
@@ -139,37 +132,47 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
 
         // create and show the alert dialog
         AlertDialog dialog = builder.create();
-        dialog.show();
+        dialog.show();*/
 
     }
 
-
+    /***
+     * this class create drive object
+     * @return object by drive type
+     */
     private Drive getDrive() {
         final Drive d = new Drive();
         try {
+            //set status of drive
             String status = statusSpinner.getSelectedItem().toString();
             DriveStatus driveStatus;
             driveStatus = toEnum(status);
             d.setStatusOfRide(driveStatus);
 
+            //set name
             String NameText = name.getText().toString();
             d.setName(NameText);
 
+            //set phone number
             String phoneText = phone.getText().toString();
             d.setPhoneNumber(Long.parseLong(phoneText));
 
+            //set email
             String emailText = email.getText().toString();
             d.setEmail(emailText);
 
+            //set start address
             String startAddress1 = startAddress.getText().toString();
             d.setStartAddress(startAddress1);
 
+            //set end address
             String endAddress1 = endAddress.getText().toString();
             d.setEndAddress(endAddress1);
 
+
+            //set date's times
             int hours = startTimePicker.getCurrentHour();
             int minutes = startTimePicker.getCurrentMinute();
-
 
             Calendar cal = Calendar.getInstance();
             cal.set(Calendar.HOUR_OF_DAY, hours);
@@ -187,32 +190,37 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
         }
         return d;
     }
+
+    /***
+     * this func add drive to database and check the input
+     * @param drive the object we want to add
+     */
     protected void addDrive(Drive drive)
     {
         try {
-            buttonInvite.setEnabled(false);
+            buttonInvite.setEnabled(false);//we cant click
             IDataBase dataBase = FactoryDataBase.getDataBase();
             dataBase.addDrive(drive, new IDataBase.Action() {
                 @Override
-                public void onSuccess() {
+                public void onSuccess() {//what to do when the action success
                     Toast.makeText(getBaseContext(), "הנסיעה הוספה בהצלחה", Toast.LENGTH_LONG).show();
-                    buttonInvite.setEnabled(true);
+                    buttonInvite.setEnabled(false);
                 }
 
                 @Override
-                public void onFailure(Exception exception) {
+                public void onFailure(Exception exception) {//what to do if its fail
                     Toast.makeText(getBaseContext(), "הוספת הנסיעה נכשלה", Toast.LENGTH_LONG).show();
                     buttonInvite.setEnabled(true);
                 }
 
                 @Override
-                public void onProgress(String status, double percent) {
+                public void onProgress(String status, double percent) {//what to do when thus in progress
                     if( percent != 100)
                         buttonInvite.setEnabled(false);
                 }
             });
         } catch (Exception e){
-            Toast.makeText(getBaseContext(), "Error \n", Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), "Error \n", Toast.LENGTH_LONG).show();//toast error
             buttonInvite.setEnabled(true);
         }
 

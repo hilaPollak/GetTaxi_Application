@@ -22,6 +22,8 @@ import com.example.hila.myfirstapplication.model.entities.DriveStatus;
 import java.util.Calendar;
 import java.util.Date;
 
+import static android.text.TextUtils.isEmpty;
+
 /**
  * this class rpresent the activity of add drives.
  */
@@ -116,8 +118,9 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
      */
 
     public void inviteButtonClicked(View view) {
-        Drive drive=getDrive();
-        addDrive(drive);
+
+        checkData();
+
 
         /*
         // setup the alert builder
@@ -131,6 +134,66 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
         // create and show the alert dialog
         AlertDialog dialog = builder.create();
         dialog.show();*/
+
+    }
+
+    /***
+     * thisfunc check the correct of email input
+     * @param editText email text
+     * @returnbtrue if currect input, false if null or uncorrect mail address
+     */
+    public boolean isEmail(EditText editText) {
+        CharSequence email= editText.getText().toString();
+        if (email == null)
+            return false;
+
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+
+    }
+
+    /***
+     * thisfunc check the correct of name input
+     * @param editText name text
+     * @returnbtrue if currect input, false if null
+     */
+    public boolean isName(EditText editText) {
+        CharSequence name= editText.getText().toString();
+        if (name == null)
+            return false;
+        else
+            return true;
+
+    }
+
+    /***
+     * thisfunc check the correct of phone input
+     * @param editText phone text
+     * @returnbtrue if currect input, false if null or uncorrect phone's digits
+     */
+    public boolean isPhone(EditText editText) {
+        CharSequence phone= editText.getText().toString();
+        if (phone == null)
+            return false;
+        return (phone.length() ==10);
+
+    }
+
+    /***
+     * this func check the input of drive before she add to data base
+     */
+    void checkData(){
+
+         if(!isName(name))//check nae input
+             name.setError("name is reqired");
+         else if(!isEmail(email))//check email input
+             email.setError("Enter valid email");
+         else if(!isPhone(phone))//check phone input
+             phone.setError("Enter correct email with 10 digits");
+         else//input correct
+        {
+            Drive drive=getDrive();//make ne drive object
+            addDrive(drive);//add object to database
+        }
 
     }
 

@@ -10,39 +10,19 @@
     <!-- this activity make the entry to the application -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="285dp"
+        android:layout_height="581dp"
+        android:background="#71faf283"
         android:orientation="vertical"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         android:paddingTop="56dp">
 
-        <!-- text box to get email -->
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:ems="10"
-            android:hint="@string/Email"
-            android:inputType="textEmailAddress" />
-
-        <!-- the password of user -->
-        <EditText
-            android:id="@+id/editText3"
-            android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:ems="10"
-            android:hint="@string/Password"
-            android:inputType="textPassword"/>
-
-        <!-- link to signup -->
         <TextView
-            android:id="@+id/link_signup"
-            android:layout_width="fill_parent"
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:gravity="center"
-            android:text="@string/NoaccountyetCreateone"
-            android:textSize="16dip" />
+            android:text="@string/Welcome"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
 
         <!-- button to login and go to add drive activity-->
@@ -50,8 +30,13 @@
             android:id="@+id/button"
             android:layout_width="127dp"
             android:layout_height="wrap_content"
-            android:text="@string/Login"
-            android:onClick="goToActivity2"/>
+            android:onClick="goToActivity2"
+            android:text="@string/Login" />
+
+        <VideoView
+            android:id="@+id/videoView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

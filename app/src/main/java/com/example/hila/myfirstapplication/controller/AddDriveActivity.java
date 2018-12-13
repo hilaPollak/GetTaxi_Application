@@ -109,8 +109,6 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
             return null;
     }
 
-
-
     /**
      * this func add drive to database
      *

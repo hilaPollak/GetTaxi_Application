@@ -7,11 +7,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.example.hila.myfirstapplication.R;
 
@@ -37,6 +37,13 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         findViews();//find the object of activity by their id
 
+        VideoView v=(VideoView)findViewById(R.id.videoView2);
+       // String path= "android.resource://com.example.hila.myfirstapplication.controller/"+R.raw.mainvideo;
+        Uri uri= Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.mainvideo);
+        v.setVideoURI(uri);
+        v.start();
+
+
     }
 
     /**
@@ -49,18 +56,14 @@ public class MainActivity extends Activity {
     }
 
     //the objects of the screen
-    private EditText username;
-    private EditText password;
-    private TextView linkSignup;
-    private Button buttonLogin;
+
+    Button buttonLogin;
 
     /**
      * this func connect the objects by their id
      */
     private void findViews() {
-        username = (EditText)findViewById( R.id.editText2 );
-        password = (EditText)findViewById( R.id.editText3 );
-        linkSignup = (TextView)findViewById( R.id.link_signup );
+
         buttonLogin = (Button)findViewById( R.id.button );
 
     }

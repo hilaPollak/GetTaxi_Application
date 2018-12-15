@@ -25,6 +25,13 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
 
+
+        <!--video that show about are application-->
+        <VideoView
+            android:id="@+id/videoView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <!-- button to login and go to add drive activity-->
         <Button
             android:id="@+id/button"
@@ -32,11 +39,6 @@
             android:layout_height="wrap_content"
             android:onClick="goToActivity2"
             android:text="@string/Login" />
-
-        <VideoView
-            android:id="@+id/videoView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

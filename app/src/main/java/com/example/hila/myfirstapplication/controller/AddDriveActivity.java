@@ -2,6 +2,7 @@ package com.example.hila.myfirstapplication.controller;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -158,10 +159,7 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
      */
     public boolean isName(EditText editText) {
         CharSequence name= editText.getText().toString();
-        if (name == null)
-            return false;
-        else
-            return true;
+        return (!TextUtils.isEmpty(name));
 
     }
 
@@ -188,7 +186,7 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
          else if(!isEmail(email))//check email input
              email.setError("Enter valid email");
          else if(!isPhone(phone))//check phone input
-             phone.setError("Enter correct email with 10 digits");
+             phone.setError("Enter correct phone number with 10 digits");
          else//input correct
         {
             Drive drive=getDrive();//make ne drive object

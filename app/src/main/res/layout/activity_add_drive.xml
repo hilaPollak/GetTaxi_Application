@@ -17,7 +17,8 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         android:paddingTop="56dp"
-        android:background="#71faf283">
+
+        >
 
 
 

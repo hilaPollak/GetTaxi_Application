@@ -40,7 +40,7 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
     private EditText startAddress;
     private EditText endAddress;
     private Button buttonInvite;
-    String[] country = {"AVAILABLE", "TREATMENT", "ENDING"};//status of drive that will show in spinner
+    String[] country = {"AVAILABLE", "PROCESSING", "FINISH"};//status of drive that will show in spinner
 
 
     /**
@@ -105,9 +105,9 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
         if (s== "AVAILABLE")
             return DriveStatus.AVAILABLE;
         else if (s== "TREATMENT")
-            return DriveStatus.TREATMENT;
+            return DriveStatus.PROCESSING;
         else if (s== "ENDING")
-            return DriveStatus.ENDING;
+            return DriveStatus.FINISH;
         else
             return null;
     }
@@ -264,6 +264,7 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
                 public void onSuccess() {//what to do when the action success
                     Toast.makeText(getBaseContext(), "הנסיעה הוספה בהצלחה", Toast.LENGTH_LONG).show();
                     buttonInvite.setEnabled(false);
+                    Init();//clear the screen
                 }
 
                 @Override
@@ -280,12 +281,27 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
             });
         } catch (Exception e){
             Toast.makeText(getBaseContext(), "Error \n", Toast.LENGTH_LONG).show();//toast error
-            buttonInvite.setEnabled(true);
+            buttonInvite.setEnabled(false);
         }
 
 
     }
+
+    /***
+     * This function clear the screen
+     */
+
+    protected void Init()
+    {
+        this.name.setText("");
+        this.email.setText("");
+        this.phone.setText("");
+        this.startAddress.setText("");
+        this.endAddress.setText("");
+    }
 }
+
+
 
 
 

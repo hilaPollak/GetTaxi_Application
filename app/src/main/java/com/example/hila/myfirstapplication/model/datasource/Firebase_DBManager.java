@@ -22,9 +22,6 @@ import java.util.List;
  * this class implement the data manager by firebase
  */
 public class Firebase_DBManager implements IDataBase {
-
-
-
     //region Fields
     static DatabaseReference drivesRef;//.ref of drives
     static DatabaseReference driverRef;//ref of drivers

@@ -17,6 +17,7 @@ public class Drive {
     private String Name;//client's name
     private long PhoneNumber;//client's phone number
     private String Email;//client's email
+    private String DriverName;//driver name
 
 
 
@@ -45,6 +46,8 @@ public class Drive {
         Name = name;
         PhoneNumber = phoneNumber;
         Email = email;
+        DriverName="";
+
     }
 
     public Drive() {
@@ -176,6 +179,14 @@ public class Drive {
         Email = email;
     }
 
+
+    public String getDriverName() {
+        return DriverName;
+    }
+
+    public void setDriverName(String d) {
+        DriverName = d;
+    }
 
     /**
      * this func get drive value object and change it to content value object

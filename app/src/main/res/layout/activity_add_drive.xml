@@ -17,8 +17,8 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         android:paddingTop="56dp"
+        android:background="#4bfaf283" >
 
-        >
 
 
 
@@ -27,9 +27,13 @@
             android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLength="30"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="@string/Name"/>
+            android:hint="@string/Name"
+            android:textColorHint="@color/black"
+            android:drawableLeft="@drawable/ic_action_name"
+            />
 
         <!-- email of client -->
         <EditText
@@ -38,16 +42,19 @@
             android:layout_height="56dp"
             android:ems="10"
             android:hint="@string/Email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/black"/>
 
         <!-- phone number of client -->
         <EditText
             android:id="@+id/editText8"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:maxLength="10"
             android:ems="10"
             android:hint="@string/Phone"
             android:inputType="phone"
+            android:textColorHint="@color/black"
             />
 
 
@@ -74,7 +81,7 @@
             android:layout_width="233dp"
             android:layout_height="109dp"
             android:timePickerMode="spinner"
-            android:background="#71faf283" />
+            android:background="#4bfaf283" />
 
 
         <!-- start address -->
@@ -84,7 +91,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPostalAddress"
-            android:hint="@string/Startaddress" />
+            android:hint="@string/Startaddress"
+            android:textColorHint="@color/black"/>
 
         <!-- end address -->
         <EditText
@@ -94,6 +102,7 @@
             android:ems="10"
             android:inputType="textPostalAddress"
             android:hint="@string/Endaddress"
+            android:textColorHint="@color/black"
             />
 
         <!-- this button make the invite -->
@@ -102,7 +111,7 @@
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Invite"
+            android:text="@string/Order"
             android:onClick="inviteButtonClicked" />
 
 

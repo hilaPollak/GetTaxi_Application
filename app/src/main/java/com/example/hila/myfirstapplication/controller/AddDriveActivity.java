@@ -1,6 +1,9 @@
 package com.example.hila.myfirstapplication.controller;
 
 import android.app.Activity;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -22,6 +25,7 @@ import com.example.hila.myfirstapplication.model.entities.DriveStatus;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import static android.text.TextUtils.isEmpty;
 
@@ -176,24 +180,61 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
 
     }
 
+
+    public boolean isAddress(EditText editText) {
+        if (editText.getText().length()>0) {
+            try {
+                Geocoder gc = new Geocoder(this);
+                if (gc.isPresent()) {
+                    List<Address> list = gc.getFromLocationName(editText.getText().toString(), 1);
+                    Address address = list.get(0);
+                    double lat = address.getLatitude();
+                    double lng = address.getLongitude();
+                    Location locationA = new Location("A");
+                    locationA.setLatitude(lat);
+                    locationA.setLongitude(lng);
+                }
+            } catch (Exception e) {
+                editText.setError("Invalid Address.");
+                return false;
+            }
+        }
+        else
+            return false;
+
+        return true;
+
+
+    }
+
+
+
     /***
      * this func check the input of drive before she add to data base
      */
     void checkData(){
-
-         if(!isName(name))//check nae input
-             name.setError("name is reqired");
+        if(!isName(name))//check nae input
+            name.setError("name is reqired");
          else if(!isEmail(email))//check email input
              email.setError("Enter valid email");
          else if(!isPhone(phone))//check phone input
              phone.setError("Enter correct phone number with 10 digits");
-         else//input correct
+         else if(!isName(name))//check nae input
+            name.setError("name is reqired");
+         else if(!isAddress(startAddress))//check phone input
+            startAddress.setError("Invalid Address");
+        else if(!isAddress(endAddress))//check phone input
+            endAddress.setError("Invalid Address");
+        else
         {
             Drive drive=getDrive();//make ne drive object
             addDrive(drive);//add object to database
         }
 
     }
+
+
+
 
     /***
      * this class create drive object
@@ -240,8 +281,8 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
             cal.set(Calendar.MILLISECOND, 0);
 
             Date c = cal.getTime();
-            d.setStartTime(c);
-            d.setEndTime(c);
+         //   d.setStartTime(c);
+           // d.setEndTime(c);
 
 
 

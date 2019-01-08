@@ -12,8 +12,8 @@ public class Drive {
     private DriveStatus StatusOfRide;//available/ treatment/ ending
     private String StartAddress;//the address to pick up client
     private String EndAddress;//Destination address
-    private Date StartTime;//start of driving
-    private Date EndTime;//end of driving
+   // private Date StartTime;//start of driving
+   // private Date EndTime;//end of driving
     private String Name;//client's name
     private long PhoneNumber;//client's phone number
     private String Email;//client's email
@@ -41,8 +41,8 @@ public class Drive {
         StatusOfRide = statusOfRide;
         StartAddress = startAddress;
         EndAddress = endAddress;
-        StartTime = startTime;
-        EndTime = endTime;
+        //StartTime = startTime;
+        //EndTime = endTime;
         Name = name;
         PhoneNumber = phoneNumber;
         Email = email;
@@ -105,33 +105,33 @@ public class Drive {
      this func return start time of driving
      * @return   the start time of driving
      */
-    public Date getStartTime() {
-        return StartTime;
-    }
+  //  public Date getStartTime() {
+     //   return StartTime;
+   // }
     /**
      this func input the ride's start time
      @param  startTime  the start time of the ride
      @return   null
      */
-    public void setStartTime(Date startTime) {
-        StartTime = startTime;
-    }
+   // public void setStartTime(Date startTime) {
+     //   StartTime = startTime;
+   // }
 
     /**
      this func return end time of driving
      * @return   the end time of driving
      */
-    public Date getEndTime() {
-        return EndTime;
-    }
+  //  public Date getEndTime() {
+    //    return EndTime;
+   // }
     /**
      this func input the ride's end time
      @param  endTime  the end time of the ride
      @return   null
      */
-    public void setEndTime(Date endTime) {
-        EndTime = endTime;
-    }
+   // public void setEndTime(Date endTime) {
+      //  EndTime = endTime;
+  //  }
     /**
      this func return the name of client
      * @return   the client's name
@@ -198,8 +198,8 @@ public class Drive {
         contentValues.put(GetTaxiContract.DriveConst.STATUS_OF_DRIVE, drive.getStatusOfRide().toString());
         contentValues.put(GetTaxiContract.DriveConst.START_ADDRESS, drive.getStartAddress());
         contentValues.put(GetTaxiContract.DriveConst.END_ADDRESS, drive.getEndAddress());
-        contentValues.put(GetTaxiContract.DriveConst.START_TIME, drive.getStartTime().toString());
-        contentValues.put(GetTaxiContract.DriveConst.END_TIME, drive.getEndTime().toString());
+       // contentValues.put(GetTaxiContract.DriveConst.START_TIME, drive.getStartTime().toString());
+       // contentValues.put(GetTaxiContract.DriveConst.END_TIME, drive.getEndTime().toString());
         contentValues.put(GetTaxiContract.DriveConst.NAME, drive.getName());
         contentValues.put(GetTaxiContract.DriveConst.PHONE_NUMBER, drive.getPhoneNumber());
         contentValues.put(GetTaxiContract.DriveConst.EMAIL, drive.getEmail());

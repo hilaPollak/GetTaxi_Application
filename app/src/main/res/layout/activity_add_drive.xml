@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/yellow"
     tools:context="com.example.hila.myfirstapplication.controller.AddDriveActivity"
-    android:background="@drawable/taxibackround">
+  >
 
 
 
@@ -17,7 +18,7 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
         android:paddingTop="56dp"
-        android:background="#4bfaf283" >
+        >
 
 
 
@@ -43,7 +44,8 @@
             android:ems="10"
             android:hint="@string/Email"
             android:inputType="textEmailAddress"
-            android:textColorHint="@color/black"/>
+            android:textColorHint="@color/black"
+            android:drawableLeft="@drawable/ic_action_mail"/>
 
         <!-- phone number of client -->
         <EditText
@@ -55,6 +57,7 @@
             android:hint="@string/Phone"
             android:inputType="phone"
             android:textColorHint="@color/black"
+            android:drawableLeft="@drawable/ic_action_phone"
             />
 
 
@@ -81,7 +84,7 @@
             android:layout_width="233dp"
             android:layout_height="109dp"
             android:timePickerMode="spinner"
-            android:background="#4bfaf283" />
+           />
 
 
         <!-- start address -->
@@ -92,7 +95,8 @@
             android:ems="10"
             android:inputType="textPostalAddress"
             android:hint="@string/Startaddress"
-            android:textColorHint="@color/black"/>
+            android:textColorHint="@color/black"
+            android:drawableLeft="@drawable/ic_action_location"/>
 
         <!-- end address -->
         <EditText
@@ -103,6 +107,7 @@
             android:inputType="textPostalAddress"
             android:hint="@string/Endaddress"
             android:textColorHint="@color/black"
+            android:drawableLeft="@drawable/ic_action_location"
             />
 
         <!-- this button make the invite -->

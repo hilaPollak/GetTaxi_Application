@@ -255,7 +255,7 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
 
             //set phone number
             String phoneText = phone.getText().toString();
-            d.setPhoneNumber(Long.parseLong(phoneText));
+            d.setPhoneNumber(phoneText);
 
             //set email
             String emailText = email.getText().toString();

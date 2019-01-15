@@ -269,6 +269,8 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
             String endAddress1 = endAddress.getText().toString();
             d.setEndAddress(endAddress1);
 
+            d.setDriverName("aa");
+
 
             //set date's times
             int hours = startTimePicker.getCurrentHour();

@@ -32,7 +32,7 @@ public class Drive {
      * @param phoneText
      * @param emailText
      */
-    public Drive(DriveStatus driveStatus, String startAddress1, String endAddress1, Date c, Date endTime, String nameText, String phoneText, String emailText){}
+    public Drive(DriveStatus driveStatus, String startAddress1, String endAddress1, Date c, Date endTime, String nameText, String phoneText, String emailText,String driverName){}
 
     /**
      this func build constructor
@@ -46,7 +46,7 @@ public class Drive {
         Name = name;
         PhoneNumber = phoneNumber;
         Email = email;
-        DriverName="";
+        DriverName="a";
 
     }
 

@@ -32,7 +32,7 @@ import static android.text.TextUtils.isEmpty;
 /**
  * this class rpresent the activity of add drives.
  */
-public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSelectedListener {
+public class AddDriveActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
     //the objects of the screen
     private EditText name;
@@ -83,7 +83,7 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
         //Setting the ArrayAdapter data on the Spinner
         statusSpinner.setAdapter(aa);
 
-        TimePicker startTimePicker = (TimePicker)findViewById(R.id.startTimePicker); // initiate a time picker
+        TimePicker startTimePicker = (TimePicker) findViewById(R.id.startTimePicker); // initiate a time picker
         startTimePicker.setIs24HourView(true); // set 24 hours mode for the time picker
 
     }
@@ -95,6 +95,7 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
         Toast.makeText(getApplicationContext(), country[position], Toast.LENGTH_LONG).show();// when you make the choise toast will jump
     }
+
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
@@ -106,11 +107,11 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
      * @return drive status object
      */
     public DriveStatus toEnum(String s) {
-        if (s== "AVAILABLE")
+        if (s == "AVAILABLE")
             return DriveStatus.AVAILABLE;
-        else if (s== "TREATMENT")
+        else if (s == "TREATMENT")
             return DriveStatus.PROCESSING;
-        else if (s== "ENDING")
+        else if (s == "ENDING")
             return DriveStatus.FINISH;
         else
             return null;
@@ -127,19 +128,6 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
         checkData();
 
 
-        /*
-        // setup the alert builder
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("successful");
-        builder.setMessage("Your order has been successfully.");
-
-        // add a button
-        builder.setPositiveButton("OK", null);
-
-        // create and show the alert dialog
-        AlertDialog dialog = builder.create();
-        dialog.show();*/
-
     }
 
     /***
@@ -148,7 +136,7 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
      * @returnbtrue if currect input, false if null or uncorrect mail address
      */
     public boolean isEmail(EditText editText) {
-        CharSequence email= editText.getText().toString();
+        CharSequence email = editText.getText().toString();
         if (email == null)
             return false;
 
@@ -162,7 +150,7 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
      * @returnbtrue if currect input, false if null
      */
     public boolean isName(EditText editText) {
-        CharSequence name= editText.getText().toString();
+        CharSequence name = editText.getText().toString();
         return (!TextUtils.isEmpty(name));
 
     }
@@ -173,16 +161,16 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
      * @returnbtrue if currect input, false if null or uncorrect phone's digits
      */
     public boolean isPhone(EditText editText) {
-        CharSequence phone= editText.getText().toString();
+        CharSequence phone = editText.getText().toString();
         if (phone == null)
             return false;
-        return (phone.length() ==10);
+        return (phone.length() == 10);
 
     }
 
 
     public boolean isAddress(EditText editText) {
-        if (editText.getText().length()>0) {
+        if (editText.getText().length() > 0) {
             try {
                 Geocoder gc = new Geocoder(this);
                 if (gc.isPresent()) {
@@ -198,8 +186,7 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
                 editText.setError("Invalid Address.");
                 return false;
             }
-        }
-        else
+        } else
             return false;
 
         return true;
@@ -208,32 +195,28 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
     }
 
 
-
     /***
      * this func check the input of drive before she add to data base
      */
-    void checkData(){
-        if(!isName(name))//check nae input
+    void checkData() {
+        if (!isName(name))//check nae input
             name.setError("name is reqired");
-         else if(!isEmail(email))//check email input
-             email.setError("Enter valid email");
-         else if(!isPhone(phone))//check phone input
-             phone.setError("Enter correct phone number with 10 digits");
-         else if(!isName(name))//check nae input
+        else if (!isEmail(email))//check email input
+            email.setError("Enter valid email");
+        else if (!isPhone(phone))//check phone input
+            phone.setError("Enter correct phone number with 10 digits");
+        else if (!isName(name))//check nae input
             name.setError("name is reqired");
-         else if(!isAddress(startAddress))//check phone input
+        else if (!isAddress(startAddress))//check phone input
             startAddress.setError("Invalid Address");
-        else if(!isAddress(endAddress))//check phone input
+        else if (!isAddress(endAddress))//check phone input
             endAddress.setError("Invalid Address");
-        else
-        {
-            Drive drive=getDrive();//make ne drive object
+        else {
+            Drive drive = getDrive();//make ne drive object
             addDrive(drive);//add object to database
         }
 
     }
-
-
 
 
     /***
@@ -276,16 +259,16 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
             int hours = startTimePicker.getCurrentHour();
             int minutes = startTimePicker.getCurrentMinute();
 
-            Calendar cal = Calendar.getInstance();
-            cal.set(Calendar.HOUR_OF_DAY, hours);
-            cal.set(Calendar.MINUTE, minutes);
-            cal.set(Calendar.SECOND, 0);
-            cal.set(Calendar.MILLISECOND, 0);
+            String time = String.format("%02d:%02d", hours, minutes);
+//
+//            Calendar cal = Calendar.getInstance();
+//            cal.set(Calendar.HOUR_OF_DAY, hours);
+//            cal.set(Calendar.MINUTE, minutes);
+//            cal.set(Calendar.SECOND, 0);
+//            cal.set(Calendar.MILLISECOND, 0);
 
-            Date c = cal.getTime();
-         //   d.setStartTime(c);
-           // d.setEndTime(c);
 
+            d.setStartTime(time);
 
 
         } catch (Exception e) {
@@ -297,32 +280,31 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
      * this func add drive to database and check the input
      * @param drive the object we want to add
      */
-    protected void addDrive(Drive drive)
-    {
+    protected void addDrive(Drive drive) {
         try {
-            buttonInvite.setEnabled(false);//we cant click
+            //  buttonInvite.setEnabled(false);//we cant click
             IDataBase dataBase = FactoryDataBase.getDataBase();
             dataBase.addDrive(drive, new IDataBase.Action() {
                 @Override
                 public void onSuccess() {//what to do when the action success
                     Toast.makeText(getBaseContext(), "הנסיעה הוספה בהצלחה", Toast.LENGTH_LONG).show();
-                    buttonInvite.setEnabled(false);
+                    //   buttonInvite.setEnabled(false);
                     Init();//clear the screen
                 }
 
                 @Override
                 public void onFailure(Exception exception) {//what to do if its fail
                     Toast.makeText(getBaseContext(), "הוספת הנסיעה נכשלה", Toast.LENGTH_LONG).show();
-                    buttonInvite.setEnabled(true);
+                    // buttonInvite.setEnabled(true);
                 }
 
                 @Override
                 public void onProgress(String status, double percent) {//what to do when thus in progress
-                    if( percent != 100)
-                        buttonInvite.setEnabled(false);
+                    // if (percent != 100)
+                    //   buttonInvite.setEnabled(false);
                 }
             });
-        } catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(getBaseContext(), "Error \n", Toast.LENGTH_LONG).show();//toast error
             buttonInvite.setEnabled(false);
         }
@@ -334,8 +316,7 @@ public class AddDriveActivity extends Activity  implements  AdapterView.OnItemSe
      * This function clear the screen
      */
 
-    protected void Init()
-    {
+    protected void Init() {
         this.name.setText("");
         this.email.setText("");
         this.phone.setText("");

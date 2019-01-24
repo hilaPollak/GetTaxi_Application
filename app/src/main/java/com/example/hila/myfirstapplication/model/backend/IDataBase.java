@@ -3,7 +3,7 @@ import com.example.hila.myfirstapplication.model.entities.Drive;
 import com.example.hila.myfirstapplication.model.entities.Driver;
 
 /***
- * this interface represent the func of data manager
+ * This interface represent the function of data manager
  */
 public interface IDataBase {
     //region Inner InterFaces

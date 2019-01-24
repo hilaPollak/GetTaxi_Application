@@ -2,7 +2,7 @@ package com.example.hila.myfirstapplication.model.entities;
 import java.io.Serializable;
 
 /**
- this enum represent the status of ride
+ This enum represent the status of ride
  */
 public enum DriveStatus implements Serializable {
     AVAILABLE, PROCESSING, FINISH;
@@ -18,6 +18,11 @@ public enum DriveStatus implements Serializable {
         return null;
     }
 
+    /***
+     * This function does casting from string to enum
+     * @param s The string of status
+     * @return
+     */
     public DriveStatus toEnum(String s) {
         if (s.equalsIgnoreCase(AVAILABLE.toString()))
             return DriveStatus.AVAILABLE;

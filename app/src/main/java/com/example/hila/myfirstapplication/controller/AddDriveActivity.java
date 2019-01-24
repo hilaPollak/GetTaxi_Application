@@ -50,7 +50,7 @@ public class AddDriveActivity extends Activity implements AdapterView.OnItemSele
 
 
     /**
-     * this func connect the objects by their id
+     * This func connect the objects by their id
      */
     private void findViews() {
         name = (EditText) findViewById(R.id.editText);
@@ -67,7 +67,7 @@ public class AddDriveActivity extends Activity implements AdapterView.OnItemSele
 
 
     /**
-     * this func make the view of the object in the activity when he called
+     * This func make the view of the object in the activity when he called
      *
      * @param savedInstanceState represent the jump of activity
      */
@@ -147,7 +147,7 @@ public class AddDriveActivity extends Activity implements AdapterView.OnItemSele
     }
 
     /***
-     * thisfunc check the correct of name input
+     * This func check the correct of name input
      * @param editText name text
      * @returnbtrue if currect input, false if null
      */
@@ -170,7 +170,11 @@ public class AddDriveActivity extends Activity implements AdapterView.OnItemSele
 
     }
 
-
+    /***
+     * This function returns true if the string is real address
+     * @param editText
+     * @return
+     */
     public boolean isAddress(EditText editText) {
         if (editText.getText().length() > 0) {
             try {
@@ -198,7 +202,7 @@ public class AddDriveActivity extends Activity implements AdapterView.OnItemSele
 
 
     /***
-     * this func check the input of drive before she add to data base
+     * This func check the input of drive before she add to data base
      */
     void checkData() {
         if (!isName(name))//check nae input
@@ -328,6 +332,10 @@ public class AddDriveActivity extends Activity implements AdapterView.OnItemSele
      * This function clear the screen
      */
 
+
+    /***
+     * This function initialize the valuse after adding drive
+     */
     protected void Init() {
         this.name.setText("");
         this.email.setText("");

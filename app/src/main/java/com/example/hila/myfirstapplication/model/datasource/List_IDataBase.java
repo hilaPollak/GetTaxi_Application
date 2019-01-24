@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /***
- * this class implement the interface to manager the database by list
+ * This class implement the interface to manager the database by list
  */
 public class List_IDataBase implements IDataBase {
     static List<Drive> drives= new ArrayList<>();//list of drive

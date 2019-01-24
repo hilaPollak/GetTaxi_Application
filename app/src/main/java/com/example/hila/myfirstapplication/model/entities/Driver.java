@@ -3,7 +3,7 @@ package com.example.hila.myfirstapplication.model.entities;
 import android.content.ContentValues;
 
 /**
- this class represent the driver's characteristics
+ This class represent the driver's characteristics
  */
 public class Driver {
     private String FirstName;//first name of driver

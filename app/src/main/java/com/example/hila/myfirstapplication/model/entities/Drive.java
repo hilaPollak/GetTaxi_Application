@@ -40,8 +40,15 @@ public class Drive {
     public Drive(DriveStatus driveStatus, String startAddress1, String endAddress1, String startTime, String nameText, String phoneText, String emailText, String driverName) {
     }
 
-    /**
-     * this func build constructor
+    /***
+     * constructor
+     * @param statusOfRide
+     * @param startAddress
+     * @param endAddress
+     * @param startTime
+     * @param name
+     * @param phoneNumber
+     * @param email
      */
     public Drive(DriveStatus statusOfRide, String startAddress, String endAddress, String startTime, String name, String phoneNumber, String email) {
         StatusOfRide = statusOfRide;
@@ -194,14 +201,26 @@ public class Drive {
     }
 
 
+    /***
+     * This function return the driver name
+     * @return
+     */
     public String getDriverName() {
         return DriverName;
     }
 
+    /***
+     *
+     * @param d The drivers name
+     */
     public void setDriverName(String d) {
         DriverName = d;
     }
 
+    /***
+     * This function returns a string with all the details of the drive
+     * @return
+     */
     @Override
     public String toString() {
         return "Name: " + Name + "\n" + "Phone Number: " + PhoneNumber + "\n" + "Start Address: " + StartAddress + "\n"
@@ -209,6 +228,12 @@ public class Drive {
 
     }
 
+    /***
+     * This function returns the location
+     * @param context
+     * @return
+     * @throws Exception
+     */
     public Location getLocation(Context context) throws Exception {
         Geocoder gc = new Geocoder(context, Locale.getDefault());
         Location locationA = null;
@@ -228,26 +253,43 @@ public class Drive {
 
 
     ////////////////////the id of request in firebase store//////////////////////////
+
+    /***
+     * This function return the ID of the driver
+     * @return
+     */
     public String getId() {
         return id;
     }
 
+    /***
+     * This function input the ID od the driver
+     * @param id
+     */
     public void setId(String id) {
         this.id = id;
     }
 
 
+    /***
+     * This funciton return the distance
+     * @return
+     */
     public String getDistance() {
         return Distance;
     }
 
+    /***
+     * This function input the distance
+     * @param distance
+     */
     public void setDistance(String distance) {
         Distance = distance;
     }
 
 
     /**
-     * this func get drive value object and change it to content value object
+     * This func get drive value object and change it to content value object
      *
      * @param drive the object by type drive
      * @return object by type content value

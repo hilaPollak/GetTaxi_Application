@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /***
- * this class implement the data manager by firebase
+ * This class implement the data manager by firebase
  */
 public class Firebase_DBManager implements IDataBase {
     //region Fields

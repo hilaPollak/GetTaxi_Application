@@ -1,9 +1,15 @@
 package com.example.hila.myfirstapplication.model.entities;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 
 import java.time.Clock;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * this class represent the drive's characteristics
@@ -17,11 +23,13 @@ public class Drive {
     private String PhoneNumber;//client's phone number
     private String Email;//client's email
     private String DriverName;//driver name
+    private String id;
+    private String Distance;
 
 
     /**
      * this func build defult constructor
-
+     *
      * @param driveStatus
      * @param startAddress1
      * @param endAddress1
@@ -197,8 +205,25 @@ public class Drive {
     @Override
     public String toString() {
         return "Name: " + Name + "\n" + "Phone Number: " + PhoneNumber + "\n" + "Start Address: " + StartAddress + "\n"
-                + "End Address: " + EndAddress + "\n" + "Email: " + Email + "\n" + "Status of drive: " + StatusOfRide.toString() + "\n";
+                + "End Address: " + EndAddress + "\n" + "Start time: " + StartTime + "\n" + "Email: " + Email + "\n" + "Status of drive: " + StatusOfRide.toString() + "\n";
 
+    }
+
+    public Location getLocation(Context context) throws Exception {
+        Geocoder gc = new Geocoder(context, Locale.getDefault());
+        Location locationA = null;
+        if (gc.isPresent()) {
+            List<Address> list = gc.getFromLocationName(getStartAddress(), 1);
+            Address address = list.get(0);
+            double lat = address.getLatitude();
+            double lng = address.getLongitude();
+
+            locationA = new Location("A");
+
+            locationA.setLatitude(lat);
+            locationA.setLongitude(lng);
+        }
+        return locationA;
     }
 
 
@@ -211,11 +236,19 @@ public class Drive {
         this.id = id;
     }
 
-    private String id;
+
+    public String getDistance() {
+        return Distance;
+    }
+
+    public void setDistance(String distance) {
+        Distance = distance;
+    }
 
 
     /**
      * this func get drive value object and change it to content value object
+     *
      * @param drive the object by type drive
      * @return object by type content value
      */
@@ -224,14 +257,15 @@ public class Drive {
         contentValues.put(GetTaxiContract.DriveConst.STATUS_OF_DRIVE, drive.getStatusOfRide().toString());
         contentValues.put(GetTaxiContract.DriveConst.START_ADDRESS, drive.getStartAddress());
         contentValues.put(GetTaxiContract.DriveConst.END_ADDRESS, drive.getEndAddress());
-       // contentValues.put(GetTaxiContract.DriveConst.START_TIME, drive.getStartTime().toString());
-       // contentValues.put(GetTaxiContract.DriveConst.END_TIME, drive.getEndTime().toString());
+        // contentValues.put(GetTaxiContract.DriveConst.START_TIME, drive.getStartTime().toString());
+        // contentValues.put(GetTaxiContract.DriveConst.END_TIME, drive.getEndTime().toString());
         contentValues.put(GetTaxiContract.DriveConst.NAME, drive.getName());
         contentValues.put(GetTaxiContract.DriveConst.PHONE_NUMBER, drive.getPhoneNumber());
         contentValues.put(GetTaxiContract.DriveConst.EMAIL, drive.getEmail());
 
 
-        return contentValues;}
+        return contentValues;
+    }
 
 
 
@@ -254,9 +288,6 @@ public class Drive {
 
 
         return drive;}*/
-
-
-
 
 
 }

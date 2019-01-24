@@ -1,9 +1,11 @@
 package com.example.hila.myfirstapplication.controller;
 
 import android.app.Activity;
+import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -213,6 +215,7 @@ public class AddDriveActivity extends Activity implements AdapterView.OnItemSele
             endAddress.setError("Invalid Address");
         else {
             Drive drive = getDrive();//make ne drive object
+
             addDrive(drive);//add object to database
         }
 
@@ -280,35 +283,44 @@ public class AddDriveActivity extends Activity implements AdapterView.OnItemSele
      * this func add drive to database and check the input
      * @param drive the object we want to add
      */
-    protected void addDrive(Drive drive) {
-        try {
-            //  buttonInvite.setEnabled(false);//we cant click
-            IDataBase dataBase = FactoryDataBase.getDataBase();
-            dataBase.addDrive(drive, new IDataBase.Action() {
-                @Override
-                public void onSuccess() {//what to do when the action success
-                    Toast.makeText(getBaseContext(), "הנסיעה הוספה בהצלחה", Toast.LENGTH_LONG).show();
-                    //   buttonInvite.setEnabled(false);
-                    Init();//clear the screen
-                }
+    protected void addDrive(final Drive drive) {
+
+            final IDataBase dataBase = FactoryDataBase.getDataBase();
+            new AsyncTask<Context,Void,Void>()
+            {
 
                 @Override
-                public void onFailure(Exception exception) {//what to do if its fail
-                    Toast.makeText(getBaseContext(), "הוספת הנסיעה נכשלה", Toast.LENGTH_LONG).show();
-                    // buttonInvite.setEnabled(true);
-                }
+                protected Void doInBackground(Context... contexts) {
+                    try {
+                        dataBase.addDrive(drive, new IDataBase.Action() {
+                            @Override
+                            public void onSuccess() {//what to do when the action success
+                                Toast.makeText(getBaseContext(), "הנסיעה הוספה בהצלחה", Toast.LENGTH_LONG).show();
+                                //   buttonInvite.setEnabled(false);
+                                Init();//clear the screen
+                            }
 
-                @Override
-                public void onProgress(String status, double percent) {//what to do when thus in progress
-                    // if (percent != 100)
-                    //   buttonInvite.setEnabled(false);
-                }
-            });
-        } catch (Exception e) {
-            Toast.makeText(getBaseContext(), "Error \n", Toast.LENGTH_LONG).show();//toast error
-            buttonInvite.setEnabled(false);
-        }
+                            @Override
+                            public void onFailure(Exception exception) {//what to do if its fail
+                                Toast.makeText(getBaseContext(), "הוספת הנסיעה נכשלה", Toast.LENGTH_LONG).show();
+                                // buttonInvite.setEnabled(true);
+                            }
 
+                            @Override
+                            public void onProgress(String status, double percent) {//what to do when thus in progress
+                                // if (percent != 100)
+                                //   buttonInvite.setEnabled(false);
+                            }
+                        });
+                        return null;
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println(e.getMessage());
+                        return null;
+                    }
+                }
+            }.execute();
 
     }
 

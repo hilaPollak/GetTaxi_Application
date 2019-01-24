@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.MainActivity"
-    android:background="@color/yellow">
+    android:background="@color/yellow"
+    tools:context=".controller.MainActivity">
 
     <!-- this activity make the entry to the application -->
     <LinearLayout
@@ -17,16 +17,14 @@
         android:paddingRight="24dp"
         android:paddingTop="56dp">
 
+        <!-- the title of activity-->
         <TextView
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Welcome"
-            android:textSize="23dp"
             android:textAlignment="center"
-             />
-
-
+            android:textSize="23dp" />
 
         <!--video that show about are application-->
         <VideoView

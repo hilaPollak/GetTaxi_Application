@@ -1,18 +1,24 @@
 package com.example.hila.myfirstapplication.model.entities;
+
 import java.io.Serializable;
 
 /**
- This enum represent the status of ride
+ * This enum represent the status of ride
  */
 public enum DriveStatus implements Serializable {
     AVAILABLE, PROCESSING, FINISH;
-    public String toString(){
-        switch(this){
-            case AVAILABLE :
+
+    /***
+     * this convert from enum to string
+     * @return string of enum
+     */
+    public String toString() {
+        switch (this) {
+            case AVAILABLE:
                 return "AVAILABLE";
-            case PROCESSING :
+            case PROCESSING:
                 return "PROCESSING";
-            case FINISH :
+            case FINISH:
                 return "FINISH";
         }
         return null;

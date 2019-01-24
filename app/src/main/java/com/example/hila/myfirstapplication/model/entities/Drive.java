@@ -23,32 +23,18 @@ public class Drive {
     private String PhoneNumber;//client's phone number
     private String Email;//client's email
     private String DriverName;//driver name
-    private String id;
-    private String Distance;
+    private String id;//the key of task in firebase
+    private String Distance;//the distance between the start address to driver's location
 
 
     /**
-     * this func build defult constructor
-     *
-     * @param driveStatus
-     * @param startAddress1
-     * @param endAddress1
-     * @param nameText
-     * @param phoneText
-     * @param emailText
+     * this func build default constructor for firebase
      */
     public Drive(DriveStatus driveStatus, String startAddress1, String endAddress1, String startTime, String nameText, String phoneText, String emailText, String driverName) {
     }
 
     /***
      * constructor
-     * @param statusOfRide
-     * @param startAddress
-     * @param endAddress
-     * @param startTime
-     * @param name
-     * @param phoneNumber
-     * @param email
      */
     public Drive(DriveStatus statusOfRide, String startAddress, String endAddress, String startTime, String name, String phoneNumber, String email) {
         StatusOfRide = statusOfRide;
@@ -62,6 +48,9 @@ public class Drive {
 
     }
 
+    /***
+     * default constructor
+     */
     public Drive() {
     }
 
@@ -218,75 +207,36 @@ public class Drive {
     }
 
     /***
-     * This function returns a string with all the details of the drive
-     * @return
-     */
-    @Override
-    public String toString() {
-        return "Name: " + Name + "\n" + "Phone Number: " + PhoneNumber + "\n" + "Start Address: " + StartAddress + "\n"
-                + "End Address: " + EndAddress + "\n" + "Start time: " + StartTime + "\n" + "Email: " + Email + "\n" + "Status of drive: " + StatusOfRide.toString() + "\n";
-
-    }
-
-    /***
-     * This function returns the location
-     * @param context
-     * @return
-     * @throws Exception
-     */
-    public Location getLocation(Context context) throws Exception {
-        Geocoder gc = new Geocoder(context, Locale.getDefault());
-        Location locationA = null;
-        if (gc.isPresent()) {
-            List<Address> list = gc.getFromLocationName(getStartAddress(), 1);
-            Address address = list.get(0);
-            double lat = address.getLatitude();
-            double lng = address.getLongitude();
-
-            locationA = new Location("A");
-
-            locationA.setLatitude(lat);
-            locationA.setLongitude(lng);
-        }
-        return locationA;
-    }
-
-
-    ////////////////////the id of request in firebase store//////////////////////////
-
-    /***
-     * This function return the ID of the driver
-     * @return
+     * This function return the ID of the driver in firebase store
+     * @return the id value
      */
     public String getId() {
         return id;
     }
 
     /***
-     * This function input the ID od the driver
-     * @param id
+     * This function input the ID od the driver in firebase store
+     * @param id the root of firebase task
      */
     public void setId(String id) {
         this.id = id;
     }
 
-
     /***
-     * This funciton return the distance
-     * @return
+     * This funciton return the distance between the driver to drive
+     * @return the distance
      */
     public String getDistance() {
         return Distance;
     }
 
     /***
-     * This function input the distance
-     * @param distance
+     * This function input the distance between the driver to drive
+     * @param distance the calculate distance we want set
      */
     public void setDistance(String distance) {
         Distance = distance;
     }
-
 
     /**
      * This func get drive value object and change it to content value object
@@ -299,37 +249,45 @@ public class Drive {
         contentValues.put(GetTaxiContract.DriveConst.STATUS_OF_DRIVE, drive.getStatusOfRide().toString());
         contentValues.put(GetTaxiContract.DriveConst.START_ADDRESS, drive.getStartAddress());
         contentValues.put(GetTaxiContract.DriveConst.END_ADDRESS, drive.getEndAddress());
-        // contentValues.put(GetTaxiContract.DriveConst.START_TIME, drive.getStartTime().toString());
-        // contentValues.put(GetTaxiContract.DriveConst.END_TIME, drive.getEndTime().toString());
         contentValues.put(GetTaxiContract.DriveConst.NAME, drive.getName());
         contentValues.put(GetTaxiContract.DriveConst.PHONE_NUMBER, drive.getPhoneNumber());
         contentValues.put(GetTaxiContract.DriveConst.EMAIL, drive.getEmail());
 
-
         return contentValues;
     }
 
+    /***
+     * This function convert the location by string address
+     * @param context the context of activity to calculate the geocoder
+     * @return the convert location from address
+     */
+    public Location getLocation(Context context) throws Exception {
+        Geocoder gc = new Geocoder(context, Locale.getDefault());
+        Location locationA = null;//create new location
+        if (gc.isPresent()) {
+            List<Address> list = gc.getFromLocationName(getStartAddress(), 1);
+            Address address = list.get(0);
+            double lat = address.getLatitude();//set latitude
+            double lng = address.getLongitude();//set longitude
 
+            locationA = new Location("A");
 
-    /*
-    /**
-     * this func get content value object and change it to drive value
-     * @param contentValues the object by type content value
-     * @return object by type drive
+            locationA.setLatitude(lat);
+            locationA.setLongitude(lng);
+        }
+        return locationA;
+    }
 
-    public static Drive ContentValuesToDrive(ContentValues contentValues) {
-        Drive drive = new Drive();
-        drive.setStatusOfRide(contentValues.getAsString(GetTaxiContract.DriveConst.STATUS_OF_DRIVE));
-        drive.setStartAddress(contentValues.getAsString(GetTaxiContract.DriveConst.START_ADDRESS));
-        drive.setEndAddress(contentValues.getAsString(GetTaxiContract.DriveConst.END_ADDRESS));
-        drive.setStartTime(contentValues.getAsLong(GetTaxiContract.DriveConst.START_TIME));
-        drive.setEndTime(contentValues.getAsString(GetTaxiContract.DriveConst.END_TIME));
-        drive.setName(contentValues.getAsString(GetTaxiContract.DriveConst.NAME));
-        drive.setPhoneNumber(contentValues.getAsLong(GetTaxiContract.DriveConst.PHONE_NUMBER));
-        drive.setEmail(contentValues.getAsString(GetTaxiContract.DriveConst.EMAIL));
+    /***
+     * This function returns a string with all the details of the drive
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "Name: " + Name + "\n" + "Phone Number: " + PhoneNumber + "\n" + "Start Address: " + StartAddress + "\n"
+                + "End Address: " + EndAddress + "\n" + "Start time: " + StartTime + "\n" + "Email: " + Email + "\n" + "Status of drive: " + StatusOfRide.toString() + "\n";
 
-
-        return drive;}*/
+    }
 
 
 }

@@ -3,7 +3,7 @@ package com.example.hila.myfirstapplication.model.entities;
 import android.content.ContentValues;
 
 /**
- This class represent the driver's characteristics
+ * This class represent the driver's characteristics
  */
 public class Driver {
     private String FirstName;//first name of driver
@@ -16,110 +16,133 @@ public class Driver {
 
 
     /**
-     this func build defult constructor
+     * this func build default constructor
      */
-    public Driver(){}
+    public Driver() {
+    }
 
     /**
-     this func build constructor
+     * this func build constructor
      */
-    public Driver(String firstName, String lastName, String id, String phoneNumber, String email, String creditCard,String password1) {
+    public Driver(String firstName, String lastName, String id, String phoneNumber, String email, String creditCard, String password1) {
         FirstName = firstName;
         LastName = lastName;
         _Id = id;
         PhoneNumber = phoneNumber;
         Email = email;
         CreditCard = creditCard;
-        password=password1;
+        password = password1;
     }
 
     /**
-     this func return the first name of driver
-     * @return   the driver's first name
+     * this func return the first name of driver
+     *
+     * @return the driver's first name
      */
     public String getFirstName() {
         return FirstName;
     }
+
     /**
-     this func input the driver's first name
-     @param  firstName  the first name of driver
-     @return   null
+     * this func input the driver's first name
+     *
+     * @param firstName the first name of driver
+     * @return null
      */
     public void setFirstName(String firstName) {
         FirstName = firstName;
     }
 
     /**
-     this func return the last name of driver
-     * @return   the driver's last name
+     * this func return the last name of driver
+     *
+     * @return the driver's last name
      */
     public String getLastName() {
         return LastName;
     }
+
     /**
-     this func input the driver's last name
-     @param  lastName  the last name of driver
-     @return   null
+     * this func input the driver's last name
+     *
+     * @param lastName the last name of driver
+     * @return null
      */
     public void setLastName(String lastName) {
         LastName = lastName;
     }
+
     /**
-     this func return the id of driver
-     * @return   the driver's id
+     * this func return the id of driver
+     *
+     * @return the driver's id
      */
     public String get_Id() {
         return _Id;
     }
+
     /**
-     this func input the driver's id
-     @param  id  the id driver
-     @return   null
+     * this func input the driver's id
+     *
+     * @param id the id driver
+     * @return null
      */
     public void set_Id(String id) {
         _Id = id;
     }
+
     /**
-     this func return the phone number of driver
-     * @return   the driver's phone number
+     * this func return the phone number of driver
+     *
+     * @return the driver's phone number
      */
     public String getPhoneNumber() {
         return PhoneNumber;
     }
+
     /**
-     this func input the driver's phone number
-     @param  phoneNumber  the phone number of driver
-     @return   null
+     * this func input the driver's phone number
+     *
+     * @param phoneNumber the phone number of driver
+     * @return null
      */
     public void setPhoneNumber(String phoneNumber) {
         PhoneNumber = phoneNumber;
     }
+
     /**
-     this func return the email of driver
-     * @return   the driver's email
+     * this func return the email of driver
+     *
+     * @return the driver's email
      */
     public String getEmail() {
         return Email;
     }
+
     /**
-     this func input the driver's email
-     @param  email  the email of driver
-     @return   null
+     * this func input the driver's email
+     *
+     * @param email the email of driver
+     * @return null
      */
     public void setEmail(String email) {
         Email = email;
     }
+
     /**
-     this func return the credit card of driver
-     * @return   the driver's credit card
+     * this func return the credit card of driver
+     *
+     * @return the driver's credit card
      */
     public String getCreditCard() {
         return CreditCard;
     }
+
     /**
-     this func input the credit card of driver
-     @param  creditCard  the credit card of driver
-     @return   null
+     * this func input the credit card of driver
+     *
+     * @param creditCard the credit card of driver
+     * @return null
      */
     public void setCreditCard(String creditCard) {
         CreditCard = creditCard;
@@ -136,6 +159,7 @@ public class Driver {
 
     /**
      * this func get driver  value object and change it to content value object
+     *
      * @param driver the object by type driver
      * @return object by type content value
      */
@@ -153,6 +177,7 @@ public class Driver {
 
     /**
      * this func get content value object and change it to driver value
+     *
      * @param contentValues the object by type content value
      * @return object by type driver
      */
@@ -160,10 +185,10 @@ public class Driver {
         Driver driver = new Driver();
         driver.setFirstName(contentValues.getAsString(GetTaxiContract.DriverConst.FIRST_NAME));
         driver.setLastName(contentValues.getAsString(GetTaxiContract.DriverConst.LAST_NAME));
-      //  driver.set_Id(contentValues.getAsLong(GetTaxiContract.DriverConst._ID));
-      //  driver.setPhoneNumber(contentValues.getAsLong(GetTaxiContract.DriverConst.PHONE_NUMBER));
+        //  driver.set_Id(contentValues.getAsLong(GetTaxiContract.DriverConst._ID));
+        //  driver.setPhoneNumber(contentValues.getAsLong(GetTaxiContract.DriverConst.PHONE_NUMBER));
         driver.setEmail(contentValues.getAsString(GetTaxiContract.DriverConst.EMAIL));
-      //  driver.setCreditCard(contentValues.getAsLong(GetTaxiContract.DriverConst.CREDIT_CARD));
+        //  driver.setCreditCard(contentValues.getAsLong(GetTaxiContract.DriverConst.CREDIT_CARD));
 
         return driver;
     }

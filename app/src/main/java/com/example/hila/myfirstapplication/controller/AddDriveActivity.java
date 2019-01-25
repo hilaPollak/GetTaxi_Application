@@ -120,10 +120,8 @@ public class AddDriveActivity extends Activity implements AdapterView.OnItemSele
 
     /**
      * this func call the system that add drive to databasa
-     *
      * @param view the event that start the active
      */
-
     public void inviteButtonClicked(View view) {
         checkData();
     }
@@ -254,7 +252,7 @@ public class AddDriveActivity extends Activity implements AdapterView.OnItemSele
     /***
      * this func check the correct of email input
      * @param editText email text
-     * @returnbtrue if currect input, false if null or uncorrect mail address
+     * @return true if currect input, false if null or uncorrect mail address
      */
     public boolean isEmail(EditText editText) {
         CharSequence email = editText.getText().toString();
@@ -268,7 +266,7 @@ public class AddDriveActivity extends Activity implements AdapterView.OnItemSele
     /***
      * This func check the correct of name input
      * @param editText name text
-     * @returnbtrue if currect input, false if null
+     * @return true if currect input, false if null
      */
     public boolean isName(EditText editText) {
         CharSequence name = editText.getText().toString();
@@ -279,7 +277,7 @@ public class AddDriveActivity extends Activity implements AdapterView.OnItemSele
     /***
      * thisfunc check the correct of phone input
      * @param editText phone text
-     * @returnbtrue if currect input, false if null or uncorrect phone's digits
+     * @return true if currect input, false if null or uncorrect phone's digits
      */
     public boolean isPhone(EditText editText) {
         CharSequence phone = editText.getText().toString();

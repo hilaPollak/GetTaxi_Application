@@ -21,7 +21,6 @@ import com.example.hila.myfirstapplication.R;
 public class MainActivity extends Activity {
     Button buttonLogin;//button to add drive activity
 
-
     /**
      * this func make the view of the object in the activity when he called
      * @param savedInstanceState represent the jump of activity

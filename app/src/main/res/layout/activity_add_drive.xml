@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/yellow"
+    android:background="@drawable/taxi_done_pic"
     tools:context="com.example.hila.myfirstapplication.controller.AddDriveActivity">
 
     <!-- this activity get the data, check them and add drive -->
@@ -14,7 +14,8 @@
         android:orientation="vertical"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:paddingTop="56dp">
+        android:paddingTop="56dp"
+        android:background="@color/whiteback">
 
         <!-- the client name -->
         <EditText

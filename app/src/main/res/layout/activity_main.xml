@@ -4,27 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/yellow"
+    android:background="@drawable/taxi_done_pic"
     tools:context=".controller.MainActivity">
 
     <!-- this activity make the entry to the application -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="581dp"
-        android:background="#71faf283"
         android:orientation="vertical"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:paddingTop="56dp">
+        android:paddingTop="56dp"
+        android:background="@color/whiteback">
 
-        <!-- the title of activity-->
+
+    <!-- the title of activity-->
         <TextView
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Welcome"
             android:textAlignment="center"
-            android:textSize="23dp" />
+            android:textSize="23dp"
+            android:textColor="@color/yellow"/>
 
         <!--video that show about are application-->
         <VideoView
